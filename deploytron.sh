@@ -11,6 +11,7 @@ RESET='\033[0m'
 # Fancy banner with the script's name
 echo -e "${CYAN}======================================="
 echo -e "🚀✨ Welcome to the ${GREEN}Galaxy Deploytron 3000 ✨🚀"
+echo -e "    For React Deployments Only! ⚛️"
 echo -e "${CYAN}=======================================${RESET}"
 
 # Pull latest changes
@@ -24,7 +25,7 @@ else
 fi
 
 # Install dependencies
-echo -e "${YELLOW}📦 Installing dependencies...${RESET}"
+echo -e "${YELLOW}📦 Installing dependencies (React)...${RESET}"
 npm install
 if [ $? -eq 0 ]; then
   echo -e "${GREEN}✔ Dependencies installed successfully!${RESET}"
@@ -33,8 +34,8 @@ else
   exit 1
 fi
 
-# Build the application
-echo -e "${CYAN}🛠 Building the application...${RESET}"
+# Build the React app
+echo -e "${CYAN}⚛️ Building the React app...${RESET}"
 npm run build
 if [ $? -eq 0 ]; then
   echo -e "${GREEN}✔ Build completed successfully!${RESET}"
@@ -44,7 +45,7 @@ else
 fi
 
 # Restart Nginx
-echo -e "${BLUE}🔄 Restarting Nginx...${RESET}"
+echo -e "${BLUE}🔄 Restarting Nginx to serve the React app...${RESET}"
 sudo systemctl restart nginx
 if [ $? -eq 0 ]; then
   echo -e "${GREEN}✔ Nginx restarted successfully!${RESET}"
@@ -55,5 +56,5 @@ fi
 
 # Success message with flair
 echo -e "${GREEN}==========================================="
-echo -e "🎉✨ Deployment Complete! ${BLUE}Galaxy Deploytron 3000 ✨${GREEN} says: You're awesome! 🎉"
+echo -e "🎉✨ React Deployment Complete! ${BLUE}Galaxy Deploytron 3000 ✨${GREEN} says: You're awesome! 🎉"
 echo -e "${GREEN}===========================================${RESET}"
